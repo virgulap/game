@@ -1,4 +1,4 @@
-package main.scala.de.htwg.snake.util
+package de.htwg.snake.util
 
 trait Observer {
   def update

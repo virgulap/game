@@ -1,7 +1,8 @@
-package main.scala.de.htwg.snake.tui
+package de.htwg.snake.tui
 
-import main.scala.de.htwg.snake.controller._
-import main.scala.de.htwg.snake.util.Observer
+import de.htwg.snake.controller._
+import de.htwg.snake.controller.snakeController;
+import de.htwg.snake.util.Observer
 
 class takeInput(controller: snakeController){
   def send(d:Char){
@@ -42,7 +43,7 @@ class tuic(controller: snakeController) extends Observer{
       for (w <- 0 until y) {
         if (controller.snake1.myMatrix(q)(w)==2) print("#") else
         if (controller.snake1.myMatrix(q)(w)==1) print("+") else
-        if(controller.snake1.myMatrix(q)(w)>3) print("*") else
+        if(controller.snake1.myMatrix(q)(w)>3) print(controller.snake1.myMatrix(q)(w)) else
         if (controller.snake1.myMatrix(q)(w)==0) print(" ")
         }
         println("")

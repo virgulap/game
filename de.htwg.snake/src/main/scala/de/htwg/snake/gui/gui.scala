@@ -1,9 +1,10 @@
-package main.scala.de.htwg.snake.gui
+package de.htwg.snake.gui
 
 import scala.swing._
 import event._
-import main.scala.de.htwg.snake.controller._
-import main.scala.de.htwg.snake.util.Observer
+import de.htwg.snake.controller._
+import de.htwg.snake.controller.snakeController;
+import de.htwg.snake.util.Observer
 
 class guic(controller: snakeController) extends Observer  {
   var frame = new MainFrame 

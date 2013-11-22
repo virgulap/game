@@ -1,4 +1,4 @@
-package main.scala.de.htwg.snake.data
+package de.htwg.snake.data
 
 class snakeArray(val size:Int) {
 	var myMatrix = Array.ofDim[Int](size+2,size+2)

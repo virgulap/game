@@ -1,8 +1,9 @@
-package main.scala.de.htwg.snake.controller
+package de.htwg.snake.controller
 
 
-import main.scala.de.htwg.snake.util.Observable
-import main.scala.de.htwg.snake.data.snakeArray
+import de.htwg.snake.util.Observable
+import de.htwg.snake.data.snakeArray
+
  class snakeController extends Observable {
   var snake1= new snakeArray(0)
   def initilise(x:Int) {

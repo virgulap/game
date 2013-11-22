@@ -1,7 +1,8 @@
-package main.scala.de.htwg.snake
-import main.scala.de.htwg.snake.controller._
-import main.scala.de.htwg.snake.gui._
-import main.scala.de.htwg.snake.tui._
+package de.htwg.snake
+import de.htwg.snake.controller._
+import de.htwg.snake.controller.snakeController;
+import de.htwg.snake.gui._
+import de.htwg.snake.tui._
 
 object snake {
   val controller = new snakeController
