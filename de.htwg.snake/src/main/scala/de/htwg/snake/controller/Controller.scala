@@ -8,7 +8,6 @@ import de.htwg.snake.data.snakeArray
   var snake1= new snakeArray(0)
   def initilise(x:Int) {
     snake1= new snakeArray(x)
-    snake1.createFirst
     snake1.status="initialised"
     notifyObservers
   }
