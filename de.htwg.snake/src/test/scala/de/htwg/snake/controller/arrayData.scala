@@ -67,4 +67,3 @@ snake1.checkSpace(0,1)
  }
 }
 }
-}
