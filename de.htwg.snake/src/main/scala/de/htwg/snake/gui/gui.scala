@@ -5,6 +5,7 @@ import event._
 import de.htwg.snake.controller._
 import de.htwg.snake.controller.snakeController;
 import de.htwg.snake.util.Observer
+import java.awt.{ Color, Graphics2D }
 
 class guic(controller: snakeController) extends Observer  {
   var frame = new MainFrame 
@@ -22,6 +23,7 @@ class guic(controller: snakeController) extends Observer  {
     frame.pack()
     frame.size=new Dimension(200,200)
     timer1.stop()
+    ingame
   }
   def decide {
     if(controller.snake1.status=="uninitialised") {init; out=true} else
@@ -29,14 +31,14 @@ class guic(controller: snakeController) extends Observer  {
   }
   def ingame{
    
-   val panel=new GridPanel(controller.size,controller.size) {
+   val panel=new Panel {
      listenTo(keys,mouse.moves,mouse.clicks)
-     
-     for (g <- 0 until controller.size; h <- 0 until controller.size) 
-       if (controller.snake1.myMatrix(g)(h)==2) contents+= new Label("#") else
-       if (controller.snake1.myMatrix(g)(h)==1) contents+= new Label("+") else
-       if (controller.snake1.myMatrix(g)(h)>3) contents+= new Label("*") else
-       contents+= new Label(" ")
+     override def paint(g:Graphics2D){
+     g.setPaint(Color.green)
+     controller.snake1.snake.foreach(coord => g.fillOval((coord(1)-1)*15+1,(coord(0)-1)*15+1,15,15))
+     //g.setPaint(Color.red)
+     //g.fillOval((controller.snake1.ry-1)*15+1,(controller.snake1.rx-1)*15+1,15,15)
+     }
    }
    panel.reactions += {
      case e:KeyPressed => {
@@ -54,12 +56,14 @@ class guic(controller: snakeController) extends Observer  {
      }
    }
    frame.contents=panel
+   frame.size = new Dimension(100,100)
    frame.open
    panel.requestFocus()
    timer1.start()
    frame.visible=true
    frame.repaint
    frame.pack
+   frame.size = new Dimension(controller.snake1.size*15+2,controller.snake1.size*15+2)
    frame.open
   }
   val timer1=new javax.swing.Timer(400,Swing.ActionListener(e => {controller.snake1.turn(controller.snake1.direction); controller.notifyObservers;}))

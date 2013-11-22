@@ -38,13 +38,13 @@ class tuic(controller: snakeController) extends Observer{
   }
   def status:String = controller.snake1.status
   def printer {
-    val y=controller.size
+    val y=controller.snake1.size+1
     for (q <- 0 until y) {
-      for (w <- 0 until y) {
-        if (controller.snake1.myMatrix(q)(w)==2) print("#") else
-        if (controller.snake1.myMatrix(q)(w)==1) print("+") else
-        if(controller.snake1.myMatrix(q)(w)>3) print(controller.snake1.myMatrix(q)(w)) else
-        if (controller.snake1.myMatrix(q)(w)==0) print(" ")
+      for (w <- 0 to y) {
+        if ((q==0)||(q==controller.snake1.size)||(w==0)||(w==controller.snake1.size+1)) print("#") else
+        if ((q==controller.snake1.rx)&&(w==controller.snake1.ry)) print("+") else
+        if(controller.snake1.snake.exists(List(q,w)==_)) print("*") else
+        print(" ")
         }
         println("")
 	    }

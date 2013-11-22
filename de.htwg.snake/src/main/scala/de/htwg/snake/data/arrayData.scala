@@ -7,14 +7,14 @@ class snakeArray(val size:Int) {
 	var status:String = "uninitialised"
 	var points:Int=0
 	var rxx = new scala.util.Random
-	var rx=rxx.nextInt(size-1)+2
-    var ry=rxx.nextInt(size-1)+2
+	var rx=1
+    var ry=1
   def food{
          rx=rxx.nextInt(size)+1
          ry=rxx.nextInt(size)+1
          ((snake.exists(List(rx,ry)==_)),((size)*(size)-1!=points)) match {
-           case (true,true) => {}
-           case (false,false) =>status="finished"
+           case (false,true) => {}
+           case (true,false) =>status="finished"
            case _ => food
          }
       }
