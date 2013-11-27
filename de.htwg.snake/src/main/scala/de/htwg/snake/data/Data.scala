@@ -1,8 +1,7 @@
 package de.htwg.snake.data
 
-class snakeArray(val size:Int) {
+class Snake(val size:Int) {
 	var snake = new scala.collection.mutable.ListBuffer[List[Int]]
-	snake += List(1,1)
 	var direction: Char = 'd'
 	var status:String = "uninitialised"
 	var points:Int=0
@@ -18,6 +17,11 @@ class snakeArray(val size:Int) {
            case _ => food
          }
       }
+  def init{
+    snake += List(1,1)
+    food
+    status="initialised"
+  }
   def checkSpace(x:Int, y:Int) {
     if ((snake(points)(0)+x==rx)&&(snake(points)(1)+y==ry)) {
     snake += List(snake(points)(0)+x,snake(points)(1)+y)

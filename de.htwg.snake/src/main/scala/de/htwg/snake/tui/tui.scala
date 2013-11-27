@@ -7,7 +7,7 @@ import de.htwg.snake.util.Observer
 class takeInput(controller: snakeController){
   def send(d:Char){
   if (d=='d' || d=='s' || d=='a' || d=='w') controller.snake1.turn(d) else
-  if (d=='q') controller.quit else
+  if (d=='q') controller.snake1.status="finished" else
   controller.snake1.turn(controller.snake1.direction)
   controller.notifyObservers
   }
@@ -39,9 +39,9 @@ class tuic(controller: snakeController) extends Observer{
   def status:String = controller.snake1.status
   def printer {
     val y=controller.snake1.size+1
-    for (q <- 0 until y) {
+    for (q <- 0 to y) {
       for (w <- 0 to y) {
-        if ((q==0)||(q==controller.snake1.size)||(w==0)||(w==controller.snake1.size+1)) print("#") else
+        if ((q==0)||(q==controller.snake1.size+1)||(w==0)||(w==controller.snake1.size+1)) print("#") else
         if ((q==controller.snake1.rx)&&(w==controller.snake1.ry)) print("+") else
         if(controller.snake1.snake.exists(List(q,w)==_)) print("*") else
         print(" ")

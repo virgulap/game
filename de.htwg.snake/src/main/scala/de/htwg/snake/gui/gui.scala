@@ -23,7 +23,6 @@ class guic(controller: snakeController) extends Observer  {
     frame.pack()
     frame.size=new Dimension(200,200)
     timer1.stop()
-    ingame
   }
   def decide {
     if(controller.snake1.status=="uninitialised") {init; out=true} else
@@ -36,35 +35,33 @@ class guic(controller: snakeController) extends Observer  {
      override def paint(g:Graphics2D){
      g.setPaint(Color.green)
      controller.snake1.snake.foreach(coord => g.fillOval((coord(1)-1)*15+1,(coord(0)-1)*15+1,15,15))
-     //g.setPaint(Color.red)
-     //g.fillOval((controller.snake1.ry-1)*15+1,(controller.snake1.rx-1)*15+1,15,15)
+     g.setPaint(Color.red)
+     g.fillOval((controller.snake1.ry-1)*15+1,(controller.snake1.rx-1)*15+1,15,15)
      }
    }
    panel.reactions += {
      case e:KeyPressed => {
        e.key match {
-         case Key.W => {timer1.stop; controller.snake1.turn('w'); controller.notifyObservers; timer1.start}
-         case Key.S => {timer1.stop; controller.snake1.turn('s'); controller.notifyObservers; timer1.start} 
-         case Key.A => {timer1.stop; controller.snake1.turn('a'); controller.notifyObservers; timer1.start} 
-         case Key.D => {timer1.stop; controller.snake1.turn('d'); controller.notifyObservers; timer1.start} 
-         case Key.Up => {timer1.stop; controller.snake1.turn('w'); controller.notifyObservers; timer1.start} 
-         case Key.Down => {timer1.stop; controller.snake1.turn('s'); controller.notifyObservers; timer1.start}  
-         case Key.Left => {timer1.stop; controller.snake1.turn('a'); controller.notifyObservers; timer1.start} 
-         case Key.Right => {timer1.stop; controller.snake1.turn('d'); controller.notifyObservers; timer1.start} 
-         case Key.Q => controller.quit 
+         case Key.W => {timer1.stop; controller.snake1.turn('w'); controller.notifyObservers}
+         case Key.S => {timer1.stop; controller.snake1.turn('s'); controller.notifyObservers} 
+         case Key.A => {timer1.stop; controller.snake1.turn('a'); controller.notifyObservers} 
+         case Key.D => {timer1.stop; controller.snake1.turn('d'); controller.notifyObservers} 
+         case Key.Up => {timer1.stop; controller.snake1.turn('w'); controller.notifyObservers} 
+         case Key.Down => {timer1.stop; controller.snake1.turn('s'); controller.notifyObservers}  
+         case Key.Left => {timer1.stop; controller.snake1.turn('a'); controller.notifyObservers} 
+         case Key.Right => {timer1.stop; controller.snake1.turn('d'); controller.notifyObservers} 
+         case Key.Q => controller.snake1.status="finished" 
        }
      }
    }
    frame.contents=panel
-   frame.size = new Dimension(100,100)
    frame.open
    panel.requestFocus()
    timer1.start()
    frame.visible=true
    frame.repaint
    frame.pack
-   frame.size = new Dimension(controller.snake1.size*15+2,controller.snake1.size*15+2)
-   frame.open
+   frame.size = new Dimension(controller.snake1.size*15+2,controller.snake1.size*15+50)
   }
   val timer1=new javax.swing.Timer(400,Swing.ActionListener(e => {controller.snake1.turn(controller.snake1.direction); controller.notifyObservers;}))
   def rg {
