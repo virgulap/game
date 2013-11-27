@@ -1,0 +1,57 @@
+[0m[[0mdebug[0m] [0m[0m
+[0m[[0mdebug[0m] [0mInitial source changes: [0m
+[0m[[0mdebug[0m] [0m	removed:Set()[0m
+[0m[[0mdebug[0m] [0m	added: Set(/home/andy/git/game/de.htwg.snake/src/main/scala/de/htwg/snake/tui/tui.scala, /home/andy/git/game/de.htwg.snake/src/main/scala/de/htwg/snake/util/Observable.scala, /home/andy/git/game/de.htwg.snake/src/main/scala/de/htwg/snake/controller/Controller.scala, /home/andy/git/game/de.htwg.snake/src/main/scala/de/htwg/snake/gui/gui.scala, /home/andy/git/game/de.htwg.snake/src/main/scala/de/htwg/snake/Snake.scala, /home/andy/git/game/de.htwg.snake/src/main/scala/de/htwg/snake/data/arrayData.scala)[0m
+[0m[[0mdebug[0m] [0m	modified: Set()[0m
+[0m[[0mdebug[0m] [0mRemoved products: Set()[0m
+[0m[[0mdebug[0m] [0mModified external sources: Set()[0m
+[0m[[0mdebug[0m] [0mModified binary dependencies: Set()[0m
+[0m[[0mdebug[0m] [0mInitial directly invalidated sources: Set(/home/andy/git/game/de.htwg.snake/src/main/scala/de/htwg/snake/tui/tui.scala, /home/andy/git/game/de.htwg.snake/src/main/scala/de/htwg/snake/util/Observable.scala, /home/andy/git/game/de.htwg.snake/src/main/scala/de/htwg/snake/controller/Controller.scala, /home/andy/git/game/de.htwg.snake/src/main/scala/de/htwg/snake/gui/gui.scala, /home/andy/git/game/de.htwg.snake/src/main/scala/de/htwg/snake/Snake.scala, /home/andy/git/game/de.htwg.snake/src/main/scala/de/htwg/snake/data/arrayData.scala)[0m
+[0m[[0mdebug[0m] [0m[0m
+[0m[[0mdebug[0m] [0mSources indirectly invalidated by:[0m
+[0m[[0mdebug[0m] [0m	product: Set()[0m
+[0m[[0mdebug[0m] [0m	binary dep: Set()[0m
+[0m[[0mdebug[0m] [0m	external source: Set()[0m
+[0m[[0mdebug[0m] [0mAll initially invalidated sources: Set(/home/andy/git/game/de.htwg.snake/src/main/scala/de/htwg/snake/tui/tui.scala, /home/andy/git/game/de.htwg.snake/src/main/scala/de/htwg/snake/util/Observable.scala, /home/andy/git/game/de.htwg.snake/src/main/scala/de/htwg/snake/controller/Controller.scala, /home/andy/git/game/de.htwg.snake/src/main/scala/de/htwg/snake/gui/gui.scala, /home/andy/git/game/de.htwg.snake/src/main/scala/de/htwg/snake/Snake.scala, /home/andy/git/game/de.htwg.snake/src/main/scala/de/htwg/snake/data/arrayData.scala)[0m
+[0m[[0mdebug[0m] [0mRecompiling all 6 sources: invalidated sources (6) exceeded 50.0% of all sources[0m
+[0m[[0minfo[0m] [0mCompiling 6 Scala sources to /home/andy/git/game/de.htwg.snake/target/scala-2.10+/classes...[0m
+[0m[[0mdebug[0m] [0mGetting compiler-interface from component compiler for Scala 2.10+[0m
+[0m[[0mdebug[0m] [0mPlain interface to Scala compiler 2.10.3  with arguments: [0m
+[0m[[0mdebug[0m] [0m	-nowarn[0m
+[0m[[0mdebug[0m] [0m	-d[0m
+[0m[[0mdebug[0m] [0m	/tmp/sbt_7c19ee22[0m
+[0m[[0mdebug[0m] [0m	-bootclasspath[0m
+[0m[[0mdebug[0m] [0m	/usr/lib/jvm/java-7-openjdk/jre/lib/resources.jar:/usr/lib/jvm/java-7-openjdk/jre/lib/rt.jar:/usr/lib/jvm/java-7-openjdk/jre/lib/sunrsasign.jar:/usr/lib/jvm/java-7-openjdk/jre/lib/jsse.jar:/usr/lib/jvm/java-7-openjdk/jre/lib/jce.jar:/usr/lib/jvm/java-7-openjdk/jre/lib/charsets.jar:/usr/lib/jvm/java-7-openjdk/jre/lib/netx.jar:/usr/lib/jvm/java-7-openjdk/jre/lib/plugin.jar:/usr/lib/jvm/java-7-openjdk/jre/lib/rhino.jar:/usr/lib/jvm/java-7-openjdk/jre/lib/jfr.jar:/usr/lib/jvm/java-7-openjdk/jre/classes:/home/andy/.ivy2/cache/org.scala-lang/scala-library/jars/scala-library-2.10.3.jar[0m
+[0m[[0mdebug[0m] [0m	-classpath[0m
+[0m[[0mdebug[0m] [0m	/home/andy/.sbt/boot/scala-2.10.2/org.scala-sbt/sbt/0.13.0/xsbti/interface-0.13.0.jar:/home/andy/.sbt/boot/scala-2.10.2/org.scala-sbt/sbt/0.13.0/compiler-interface-src/compiler-interface-src-0.13.0.jar:/home/andy/.ivy2/cache/org.scala-lang/scala-compiler/jars/scala-compiler-2.10.3.jar:/home/andy/.ivy2/cache/org.scala-lang/scala-reflect/jars/scala-reflect-2.10.3.jar:/home/andy/.ivy2/cache/org.scala-lang/jline/jars/jline-2.10.3.jar:/home/andy/.ivy2/cache/org.fusesource.jansi/jansi/jars/jansi-1.4.jar[0m
+[0m[[0mdebug[0m] [0m	/tmp/sbt_ef6759e2/xsbt/API.scala[0m
+[0m[[0mdebug[0m] [0m	/tmp/sbt_ef6759e2/xsbt/Analyzer.scala[0m
+[0m[[0mdebug[0m] [0m	/tmp/sbt_ef6759e2/xsbt/Command.scala[0m
+[0m[[0mdebug[0m] [0m	/tmp/sbt_ef6759e2/xsbt/Compat.scala[0m
+[0m[[0mdebug[0m] [0m	/tmp/sbt_ef6759e2/xsbt/CompilerInterface.scala[0m
+[0m[[0mdebug[0m] [0m	/tmp/sbt_ef6759e2/xsbt/ConsoleInterface.scala[0m
+[0m[[0mdebug[0m] [0m	/tmp/sbt_ef6759e2/xsbt/DelegatingReporter.scala[0m
+[0m[[0mdebug[0m] [0m	/tmp/sbt_ef6759e2/xsbt/ExtractAPI.scala[0m
+[0m[[0mdebug[0m] [0m	/tmp/sbt_ef6759e2/xsbt/LocateClassFile.scala[0m
+[0m[[0mdebug[0m] [0m	/tmp/sbt_ef6759e2/xsbt/Log.scala[0m
+[0m[[0mdebug[0m] [0m	/tmp/sbt_ef6759e2/xsbt/Message.scala[0m
+[0m[[0mdebug[0m] [0m	/tmp/sbt_ef6759e2/xsbt/ScaladocInterface.scala[0m
+[0m[[0mdebug[0m] [0mGetting compiler-interface from component compiler for Scala 2.10+[0m
+[0m[[0mdebug[0m] [0mRunning cached compiler 3e6ab867, interfacing (CompilerInterface) with Scala compiler version 2.10.3[0m
+[0m[[0mdebug[0m] [0mCalling Scala compiler with arguments  (CompilerInterface):[0m
+[0m[[0mdebug[0m] [0m	-bootclasspath[0m
+[0m[[0mdebug[0m] [0m	/usr/lib/jvm/java-7-openjdk/jre/lib/resources.jar:/usr/lib/jvm/java-7-openjdk/jre/lib/rt.jar:/usr/lib/jvm/java-7-openjdk/jre/lib/sunrsasign.jar:/usr/lib/jvm/java-7-openjdk/jre/lib/jsse.jar:/usr/lib/jvm/java-7-openjdk/jre/lib/jce.jar:/usr/lib/jvm/java-7-openjdk/jre/lib/charsets.jar:/usr/lib/jvm/java-7-openjdk/jre/lib/netx.jar:/usr/lib/jvm/java-7-openjdk/jre/lib/plugin.jar:/usr/lib/jvm/java-7-openjdk/jre/lib/rhino.jar:/usr/lib/jvm/java-7-openjdk/jre/lib/jfr.jar:/usr/lib/jvm/java-7-openjdk/jre/classes:/home/andy/.ivy2/cache/org.scala-lang/scala-library/jars/scala-library-2.10.3.jar[0m
+[0m[[0mdebug[0m] [0m	-classpath[0m
+[0m[[0mdebug[0m] [0m	/home/andy/git/game/de.htwg.snake/target/scala-2.10+/classes:/home/andy/git/game/de.htwg.snake/lib/specs2_2.10-2.3.3.jar:/home/andy/git/game/de.htwg.snake/lib/scalaz-core_2.10-7.0.4.jar:/home/andy/git/game/de.htwg.snake/lib/scalaz-concurrent_2.10-7.0.4 (1).jar:/home/andy/.ivy2/cache/org.scala-lang/scala-swing/jars/scala-swing-2.10.3.jar[0m
+[0m[[31merror[0m] [0m/home/andy/git/game/de.htwg.snake/src/main/scala/de/htwg/snake/gui/gui.scala:32: value size is not a member of de.htwg.snake.controller.snakeController[0m
+[0m[[31merror[0m] [0m   val panel=new GridPanel(controller.size,controller.size) {[0m
+[0m[[31merror[0m] [0m                                      ^[0m
+[0m[[31merror[0m] [0m/home/andy/git/game/de.htwg.snake/src/main/scala/de/htwg/snake/gui/gui.scala:32: value size is not a member of de.htwg.snake.controller.snakeController[0m
+[0m[[31merror[0m] [0m   val panel=new GridPanel(controller.size,controller.size) {[0m
+[0m[[31merror[0m] [0m                                                      ^[0m
+[0m[[31merror[0m] [0m/home/andy/git/game/de.htwg.snake/src/main/scala/de/htwg/snake/gui/gui.scala:35: value size is not a member of de.htwg.snake.controller.snakeController[0m
+[0m[[31merror[0m] [0m     for (g <- 0 until controller.size; h <- 0 until controller.size) [0m
+[0m[[31merror[0m] [0m                                  ^[0m
+[0m[[31merror[0m] [0mthree errors found[0m
+[0m[[0mdebug[0m] [0mCompilation failed (CompilerInterface)[0m
+[0m[[31merror[0m] [0m(compile:[31mcompile[0m) Compilation failed[0m
