@@ -1,9 +1,5 @@
-@(message: String)
+@(controller: controllers.snakeController)
 
-@main("Welcome to Play Framework") {
-
-    <div class="well">
-        <h1>@message</h1>
-    </div>
-
+@main("da") {
+@controller.snake1.status
 }
