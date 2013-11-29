@@ -6,8 +6,8 @@ class Snake(val size:Int) {
 	var status:String = "uninitialised"
 	var points:Int=0
 	var rxx = new scala.util.Random
-	var rx=1
-    var ry=1
+	var rx=0
+    var ry=0
   def food{
          rx=rxx.nextInt(size)+1
          ry=rxx.nextInt(size)+1
