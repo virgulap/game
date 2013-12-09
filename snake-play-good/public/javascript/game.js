@@ -1,8 +1,13 @@
+var socket = new WebSocket("ws://localhost:9000/socket");
 $(function() {
-    var sURL = unescape(window.location.pathname);
-    var socket = new WebSocket("ws://localhost:9000/socket");
     socket.onmessage = function(msg) {
-        window.location.href = sURL;
+        alert("da")
     };
+
     setTimeout(function() {socket.send("ceva");},3350);
+});
+$(document).keypress(function (e) {
+    var keycode = (e.keyCode ? e.keyCode : e.which);
+    if(keycode == '100'){ alert("d")}
+
 });
