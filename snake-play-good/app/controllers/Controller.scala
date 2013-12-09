@@ -1,12 +1,13 @@
-package controllers
+package de.htwg.snake.controller
 
 
-import util.Observable
-import data.Snake
+import de.htwg.snake.util.Observable
+import de.htwg.snake.data.Snake
 import scala.swing._
 
 
- class snakeController extends Observable {
+
+class snakeController extends Observable {
   val timer1=new javax.swing.Timer(400,Swing.ActionListener(e => {snake1.turn(snake1.direction); notifyObservers;}))
   var snake1= new Snake(0)
   var c:String=" "
@@ -21,4 +22,5 @@ import scala.swing._
         c=" "
         return c
   }
+
 }

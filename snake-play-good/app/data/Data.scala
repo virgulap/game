@@ -1,4 +1,4 @@
-package data
+package de.htwg.snake.data
 
 class Snake(val size:Int) {
 	var snake = new scala.collection.mutable.ListBuffer[List[Int]]
