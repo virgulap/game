@@ -35,20 +35,20 @@ class guic(controller: snakeController) extends Observer  {
         g.setPaint(Color.green)
         controller.snake1.snake.foreach(coord => g.fillOval((coord(1)-1)*15+1,(coord(0)-1)*15+1,15,15))
         g.setPaint(Color.red)
-        g.fillOval((controller.snake1.ry-1)*15+1,(controller.snake1.rx-1)*15+1,15,15)
+        g.fillOval((controller.ry-1)*15+1,(controller.rx-1)*15+1,15,15)
       }
     }
     panel.reactions += {
       case e:KeyPressed => {
         e.key match {
-          case Key.W => {timer1.stop; controller.snake1.turn('w'); controller.notifyObservers}
-          case Key.S => {timer1.stop; controller.snake1.turn('s'); controller.notifyObservers}
-          case Key.A => {timer1.stop; controller.snake1.turn('a'); controller.notifyObservers}
-          case Key.D => {timer1.stop; controller.snake1.turn('d'); controller.notifyObservers}
-          case Key.Up => {timer1.stop; controller.snake1.turn('w'); controller.notifyObservers}
-          case Key.Down => {timer1.stop; controller.snake1.turn('s'); controller.notifyObservers}
-          case Key.Left => {timer1.stop; controller.snake1.turn('a'); controller.notifyObservers}
-          case Key.Right => {timer1.stop; controller.snake1.turn('d'); controller.notifyObservers}
+          case Key.W => {timer1.stop; controller.turn('w'); controller.notifyObservers}
+          case Key.S => {timer1.stop; controller.turn('s'); controller.notifyObservers}
+          case Key.A => {timer1.stop; controller.turn('a'); controller.notifyObservers}
+          case Key.D => {timer1.stop; controller.turn('d'); controller.notifyObservers}
+          case Key.Up => {timer1.stop; controller.turn('w'); controller.notifyObservers}
+          case Key.Down => {timer1.stop; controller.turn('s'); controller.notifyObservers}
+          case Key.Left => {timer1.stop; controller.turn('a'); controller.notifyObservers}
+          case Key.Right => {timer1.stop; controller.turn('d'); controller.notifyObservers}
           case Key.Q => controller.snake1.status="finished"
         }
       }
@@ -62,7 +62,7 @@ class guic(controller: snakeController) extends Observer  {
     frame.pack
     frame.size = new Dimension(controller.snake1.size*15+2,controller.snake1.size*15+50)
   }
-  val timer1=new javax.swing.Timer(400,Swing.ActionListener(e => {controller.snake1.turn(controller.snake1.direction); controller.notifyObservers;}))
+  val timer1=new javax.swing.Timer(400,Swing.ActionListener(e => {controller.turn(controller.snake1.direction); controller.notifyObservers;}))
   def rg {
     controller.register(this)
   }

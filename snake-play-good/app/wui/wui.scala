@@ -3,12 +3,14 @@ package de.htwg.snake.wui
 import de.htwg.snake.controller.snakeController
 import de.htwg.snake.util.Observer
 import play.api.mvc.{Action, WebSocket, Controller}
-import play.api.libs.iteratee.{Concurrent, Iteratee, Enumerator}
+import play.api.libs.iteratee.{Concurrent, Iteratee}
 import play.api.libs.concurrent.Execution.Implicits._
 
 
 class WUI(controller: snakeController) extends Controller with Observer{
   var x=1;
+  var m:String="update"
+  var c:Char='f'
   val (out,channel) = Concurrent.broadcast[String]
   def register {
     controller.register(this)
@@ -18,17 +20,20 @@ class WUI(controller: snakeController) extends Controller with Observer{
     controller.initilise(x)
     Ok(views.html.index(controller))
   }
-  def update = Action {
-    channel push ("update")
+  def update = {
+    channel push(m)
     Ok(views.html.index(controller))
   }
   def socket = WebSocket.using[String] { request =>
 
     val in = Iteratee.foreach[String] {
-      msg => println(msg)
-        channel.push(msg)
+      msg => {
+        c=msg(0)
+        controller.turn(c)
+        controller.notifyObservers
+       // channel push(msg)
+      }
     }
-    channel.push("pusssh")
     (in,out)
   }
 }
