@@ -10,8 +10,8 @@ object snake {
   val tui = new tuic(controller)
   var input:Char='c'
   def main (args: Array[String]) {
-	gui.rg
-    tui.rg
+	gui.register
+    tui.register
     controller.notifyObservers
     while (true) {
       try {
