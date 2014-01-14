@@ -7,7 +7,11 @@ import de.htwg.snake.util.Observable
 import de.htwg.snake.data.Snake
 import scala.swing._
 
-
+/**
+ * This class inherites from  the Observable class of the Observer patter. 
+ * It models the controller which is the binding between the tui, gui and the model. 
+ * @param
+ */
 
 class snakeController extends Observable {
   val timer1=new javax.swing.Timer(400,Swing.ActionListener(e => {turn(snake1.direction); notifyObservers;}))
@@ -16,6 +20,12 @@ class snakeController extends Observable {
   var rxx = new scala.util.Random
   var rx=1
   var ry=1
+  /**
+   * This method depicts the field game with 
+   *  the snake initialy  moving from the first  coordinate (1,1) of the field
+   *  and creates the food as a random value 
+   *  @param dimension of the field
+   */
   def initilise(x:Int) {
     snake1= new Snake(x)
     snake1.snake += List(1,1)
@@ -24,13 +34,10 @@ class snakeController extends Observable {
     timer1.start()
     notifyObservers
   }
-  def check(q:Int, w:Int):String = {
-        if ((q==rx)&&(w==ry)) c="+" else
-        if(snake1.snake.exists(List(q,w)==_)) c="*" else
-        c=" "
-        return c
-  }
-
+/**
+ * This method models the food 
+ * @return 
+ */
   def food{
     rx=rxx.nextInt(snake1.size)+1
     ry=rxx.nextInt(snake1.size)+1
@@ -40,7 +47,11 @@ class snakeController extends Observable {
       case _ => food
     }
   }
-
+/**
+ * This method models how the the snake is growing.
+ * It decides if the snake has in front of it a wall or has to eat a food or change direction
+ * @param the coordinates of the momentan localisation
+ */
   def checkSpace(x:Int, y:Int) {
     if ((snake1.snake(snake1.points)(0)+x==rx)&&(snake1.snake(snake1.points)(1)+y==ry)) {
       snake1.snake += List(snake1.snake(snake1.points)(0)+x,snake1.snake(snake1.points)(1)+y)
@@ -53,6 +64,11 @@ class snakeController extends Observable {
       snake1.snake=snake1.snake.tail
     }
   }
+  /**
+   * This method models the moving of the snake. It moves right , left, up , down, 
+   * but it cant turn in the same direction in which already is
+   * @param the input of a tast
+   */
   def turn(q:Char) {
     (q,snake1.direction) match {
       case ('w','w') => {timer1.stop(); checkSpace(-1, 0); timer1.start(); notifyObservers}
