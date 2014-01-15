@@ -28,7 +28,7 @@ class tuic(controller: snakeController) extends Observer{
   /**
    * Notice the player at the end of the game and print the result
    */
-  def finish {
+  def end {
     println("")
     println("GAME OVER")
     print("You have "+controller.snake1.points+" points")
@@ -51,8 +51,7 @@ class tuic(controller: snakeController) extends Observer{
    */
   def decide {
     if(controller.snake1.status=="uninitialised") init else
-    if(controller.snake1.status=="initialised") printer else
-      finish
+    if(controller.snake1.status=="initialised") printer
   }
  
   def update = {

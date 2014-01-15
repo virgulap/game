@@ -43,7 +43,7 @@ class snakeController extends Observable {
     ry=rxx.nextInt(snake1.size)+1
     ((snake1.snake.exists(List(rx,ry)==_)),((snake1.size)*(snake1.size)-1!=snake1.points)) match {
       case (false,true) => {}
-      case (true,false) =>snake1.status="finished"
+      case (true,false) => {snake1.status="finished"; endObservers;}
       case _ => food
     }
   }
@@ -58,7 +58,7 @@ class snakeController extends Observable {
       snake1.points=snake1.points+1
       food
     } else
-    if ((snake1.snake.exists(List(snake1.snake(snake1.points)(0)+x,snake1.snake(snake1.points)(1)+y)==_)) || (snake1.snake(snake1.points)(0)+x==snake1.size+1) || (snake1.snake(snake1.points)(0)+x==0) || (snake1.snake(snake1.points)(1)+y==0) || (snake1.snake(snake1.points)(1)+y==snake1.size+1)) snake1.status="finished"
+    if ((snake1.snake.exists(List(snake1.snake(snake1.points)(0)+x,snake1.snake(snake1.points)(1)+y)==_)) || (snake1.snake(snake1.points)(0)+x==snake1.size+1) || (snake1.snake(snake1.points)(0)+x==0) || (snake1.snake(snake1.points)(1)+y==0) || (snake1.snake(snake1.points)(1)+y==snake1.size+1)) {snake1.status="finished"; endObservers; timer1.stop();}
     else {
       snake1.snake += List(snake1.snake(snake1.points)(0)+x,snake1.snake(snake1.points)(1)+y)
       snake1.snake=snake1.snake.tail

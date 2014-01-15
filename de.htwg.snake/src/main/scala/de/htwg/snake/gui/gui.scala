@@ -11,7 +11,6 @@ import java.awt.{ Color, Graphics2D }
  */
 class guic(controller: snakeController) extends Observer  {
   var frame = new MainFrame
-  var out= false
   def update {
     decide
   }
@@ -19,7 +18,7 @@ class guic(controller: snakeController) extends Observer  {
    * Opens a panel which depicts as contents the message of finishing the game and the result.
    * It uses the instance of the swing class Gridpanel,panel that lays out its contents in a uniform grid.
    */
-  def finish{
+  def end{
     frame.open
     frame.contents=new GridPanel(2,1){
       contents += new Label("Game Over")
@@ -34,15 +33,14 @@ class guic(controller: snakeController) extends Observer  {
      * Sets the wanted dimension of the finish panel 
      */
     frame.size=new Dimension(200,200)
-    timer1.stop()
   }
   /**
    * Evaluates the state of the game and decides if it initialises , starts  or finishes the game
    * Calls the specific method for each stage
    */
   def decide {
-    if(controller.snake1.status=="uninitialised") {init; out=true} else
-    if(controller.snake1.status=="initialised") ingame else {finish; out=true}
+    if(controller.snake1.status=="uninitialised") init else
+    if(controller.snake1.status=="initialised") ingame 
   }
   /**
    * Models the visualisation of the things that have to be seen and facilitates the interecation of the user with what he sees
@@ -71,15 +69,15 @@ class guic(controller: snakeController) extends Observer  {
     panel.reactions += {
       case e:KeyPressed => {
         e.key match {
-          case Key.W => {timer1.stop; controller.turn('w'); controller.notifyObservers}
-          case Key.S => {timer1.stop; controller.turn('s'); controller.notifyObservers}
-          case Key.A => {timer1.stop; controller.turn('a'); controller.notifyObservers}
-          case Key.D => {timer1.stop; controller.turn('d'); controller.notifyObservers}
-          case Key.Up => {timer1.stop; controller.turn('w'); controller.notifyObservers}
-          case Key.Down => {timer1.stop; controller.turn('s'); controller.notifyObservers}
-          case Key.Left => {timer1.stop; controller.turn('a'); controller.notifyObservers}
-          case Key.Right => {timer1.stop; controller.turn('d'); controller.notifyObservers}
-          case Key.Q => controller.snake1.status="finished"
+          case Key.W => controller.turn('w'); 
+          case Key.S => controller.turn('s'); 
+          case Key.A => controller.turn('a'); 
+          case Key.D => controller.turn('d'); 
+          case Key.Up => controller.turn('w'); 
+          case Key.Down => controller.turn('s'); 
+          case Key.Left => controller.turn('a'); 
+          case Key.Right =>  controller.turn('d'); 
+          case Key.Q => {controller.snake1.status="finished"; controller.endObservers}
         }
       }
     }
@@ -89,7 +87,6 @@ class guic(controller: snakeController) extends Observer  {
      * allows component(panel) to set the focus to itself
      */
     panel.requestFocus()
-    timer1.start()
     frame.visible=true
     frame.repaint
     frame.pack
@@ -101,7 +98,6 @@ class guic(controller: snakeController) extends Observer  {
   /**
    * predefined timer that facilitates the snake to move
    */
-  val timer1=new javax.swing.Timer(400,Swing.ActionListener(e => {controller.turn(controller.snake1.direction); controller.notifyObservers;}))
   def register {
     controller.register(this)
   }
