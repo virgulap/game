@@ -19,20 +19,21 @@ class guic(controller: snakeController) extends Observer  {
    * It uses the instance of the swing class Gridpanel,panel that lays out its contents in a uniform grid.
    */
   def end{
-    frame.open
-    frame.contents=new GridPanel(2,1){
+    
+      var panel2=new GridPanel(2,1){
       contents += new Label("Game Over")
       contents += new Label("You scored "+controller.snake1.points+" points")
     }
+    panel2.preferredSize=new Dimension(200,200)
+    frame.open
+    frame.contents=panel2
     /**
      * repaint is a function in the class GridPanel
      */
     frame.repaint()
     frame.pack()
-    /**
-     * Sets the wanted dimension of the finish panel 
-     */
-    frame.size=new Dimension(200,200)
+    
+
   }
   /**
    * Evaluates the state of the game and decides if it initialises , starts  or finishes the game
@@ -81,6 +82,7 @@ class guic(controller: snakeController) extends Observer  {
         }
       }
     }
+    panel.preferredSize = new Dimension(controller.snake1.size*15,controller.snake1.size*15)
     frame.contents=panel
     frame.open
     /**
@@ -89,11 +91,10 @@ class guic(controller: snakeController) extends Observer  {
     panel.requestFocus()
     frame.visible=true
     frame.repaint
-    frame.pack
     /**
      * sets the size of the field game depending on the desired size of the user 
      */
-    frame.size = new Dimension(controller.snake1.size*15+2,controller.snake1.size*15+50)
+    panel.preferredSize = new Dimension(controller.snake1.size*15+2,controller.snake1.size*15+50)
   }
   /**
    * predefined timer that facilitates the snake to move
@@ -117,24 +118,28 @@ class guic(controller: snakeController) extends Observer  {
       /**
        * opens a panel which depicts the initial information needed for starting the game
        */
-      contents= new FlowPanel {
+        var panel3 = new FlowPanel {
+        
         contents += new Label("How big do you want the field to be?")
         contents += new Label("")
         val nr = new TextField("10",2) {
         }
+        val nr2 = new TextField("a",2) {
+        }
         contents +=nr
+        contents +=nr2
         val btn = new Button("Start");
         listenTo(btn)
         contents+=btn
         reactions += {
           case ButtonClicked(btn) => {
-            controller.initilise(nr.text.toInt)
+            controller.setstrategy(nr2.text);
+            controller.initilise(nr.text.toInt);
           }
+         }
         }
-
-      }
-
-      size=new Dimension(270,100)
+      panel3.preferredSize=new Dimension(270,100)
+      contents=panel3
       centerOnScreen
     }
     frame.visible=true

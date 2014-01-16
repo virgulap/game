@@ -21,7 +21,7 @@ object snake {
 	gui.register
     tui.register
     controller.notifyObservers
-    while (true) {
+    while (controller.snake1.status!="finished") {
       try {
       input=readChar
 	  }

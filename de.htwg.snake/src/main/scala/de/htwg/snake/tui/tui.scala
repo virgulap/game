@@ -15,7 +15,6 @@ class takeInput(controller: snakeController){
     if (d=='d' || d=='s' || d=='a' || d=='w') controller.turn(d) else
     if (d=='q') controller.snake1.status="finished" else
       controller.turn(controller.snake1.direction)
-    controller.notifyObservers
   }
 }
 /**
@@ -44,8 +43,8 @@ class tuic(controller: snakeController) extends Observer{
    */
   def init {
     println("How big do you want the field to be?")
-    val x:Int=readInt()
-    controller.initilise(x)
+//    val x:Int=readInt()
+//    controller.initilise(x)
   }
   /**Evaluates the state of the game.
    */

@@ -8,7 +8,6 @@ class Snake(val size:Int) {
 	var direction: Char = 'd'
 	var status:String = "uninitialised"
 	var points:Int=0
-  var registered:Int=0;
 }
 
 

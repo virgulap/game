@@ -14,9 +14,62 @@ import scala.swing._
  */
 
 class snakeController extends Observable {
-  val timer1=new javax.swing.Timer(400,Swing.ActionListener(e => {turn(snake1.direction); notifyObservers;}))
+  		var nr=0;
+		var nr1=0;
+		var nr2=0;
+		trait Strategy {
+		 def run() =  algorithm()
+		
+		
+		 def algorithm():Char
+		}
+		
+		class StrategyA  extends Strategy {
+		 override def algorithm():Char = {
+			return snake1.direction
+		 }
+		}
+		class StrategyB extends Strategy {
+		 override def algorithm():Char = {
+		  nr=nr+1;
+		  if ((nr==snake1.size)&&(nr1==0)&&(nr2==0)){ 
+		    snake1.direction='s'
+			nr1=1  
+			nr=0
+			nr2=1
+		    } else if ((nr==snake1.size-1)&&(nr1==0)&&(nr2==1)) {
+		      snake1.direction='s'
+		      nr1=1  
+		      nr=0
+		    } else
+		      if ((nr==snake1.size-1)&&(nr1==1)){
+		        snake1.direction='a'
+		        nr1=2
+		        nr=0
+		      } else if ((nr==snake1.size-1)&&(nr1==2)) {
+		        snake1.direction='w'
+		        nr1=3
+		        nr=0
+		      } else if ((nr==snake1.size-1)&&(nr1==3)) {
+		        snake1.direction='d'
+		        nr=0
+		        nr1=0
+		      }
+		  return snake1.direction
+		 }
+		}
+		
+		class MyStrategy(var strategy:Strategy) {
+		 def doSomething() =  strategy.run()
+		 
+		}
+  
+  var strategy:Strategy = new StrategyA()
+  var myapp = new MyStrategy(strategy)
+  val timer1=new javax.swing.Timer(400,Swing.ActionListener(e => turn(myapp.doSomething)))
   var snake1= new Snake(0)
   var c:String=" "
+
   var rxx = new scala.util.Random
   var rx=1
   var ry=1
@@ -26,6 +79,13 @@ class snakeController extends Observable {
    *  and creates the food as a random value 
    *  @param dimension of the field
    */
+  def setstrategy(z:String) {
+    z match {
+      case "a" => strategy = new StrategyA()
+      case "b" => strategy = new StrategyB()
+    }
+    myapp = new MyStrategy(strategy)
+  }
   def initilise(x:Int) {
     snake1= new Snake(x)
     snake1.snake += List(1,1)
@@ -33,7 +93,11 @@ class snakeController extends Observable {
     snake1.status="initialised"
     timer1.start()
     notifyObservers
-  }
+}
+  
+  
+  
+ 
 /**
  * This method models the food 
  * @return 
@@ -58,7 +122,7 @@ class snakeController extends Observable {
       snake1.points=snake1.points+1
       food
     } else
-    if ((snake1.snake.exists(List(snake1.snake(snake1.points)(0)+x,snake1.snake(snake1.points)(1)+y)==_)) || (snake1.snake(snake1.points)(0)+x==snake1.size+1) || (snake1.snake(snake1.points)(0)+x==0) || (snake1.snake(snake1.points)(1)+y==0) || (snake1.snake(snake1.points)(1)+y==snake1.size+1)) {snake1.status="finished"; endObservers; timer1.stop();}
+    if ((snake1.snake.exists(List(snake1.snake(snake1.points)(0)+x,snake1.snake(snake1.points)(1)+y)==_)) || (snake1.snake(snake1.points)(0)+x==snake1.size+1) || (snake1.snake(snake1.points)(0)+x==0) || (snake1.snake(snake1.points)(1)+y==0) || (snake1.snake(snake1.points)(1)+y==snake1.size+1)) {timer1.stop(); snake1.status="finished"; endObservers; }
     else {
       snake1.snake += List(snake1.snake(snake1.points)(0)+x,snake1.snake(snake1.points)(1)+y)
       snake1.snake=snake1.snake.tail
