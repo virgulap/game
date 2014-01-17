@@ -8,7 +8,7 @@ import de.htwg.snake.data.Snake
 import scala.swing._
 
 /**
- * This class inherites from  the Observable class of the Observer patter. 
+ *This class inherites from  the Observable class of the Observer patter. 
  * It models the controller which is the binding between the tui, gui and the model. 
  * @param
  */
@@ -19,11 +19,8 @@ class snakeController extends Observable {
 		var nr2=0;
 		trait Strategy {
 		 def run() =  algorithm()
-		
-		
 		 def algorithm():Char
 		}
-		
 		class StrategyA  extends Strategy {
 		 override def algorithm():Char = {
 			return snake1.direction
@@ -58,12 +55,9 @@ class snakeController extends Observable {
 		  return snake1.direction
 		 }
 		}
-		
 		class MyStrategy(var strategy:Strategy) {
 		 def doSomething() =  strategy.run()
-		 
-		}
-  
+		 	}
   var strategy:Strategy = new StrategyA()
   var myapp = new MyStrategy(strategy)
   val timer1=new javax.swing.Timer(400,Swing.ActionListener(e => turn(myapp.doSomething)))
@@ -73,12 +67,7 @@ class snakeController extends Observable {
   var rxx = new scala.util.Random
   var rx=1
   var ry=1
-  /**
-   * This method depicts the field game with 
-   *  the snake initialy  moving from the first  coordinate (1,1) of the field
-   *  and creates the food as a random value 
-   *  @param dimension of the field
-   */
+ 
   def setstrategy(z:String) {
     z match {
       case "a" => strategy = new StrategyA()
@@ -86,6 +75,12 @@ class snakeController extends Observable {
     }
     myapp = new MyStrategy(strategy)
   }
+   /**
+   * This method depicts the field game with 
+   *  the snake initially  moving from the first  coordinate (1,1) of the field
+   *  and creates the food as a random value 
+   *  @param dimension of the field
+   */
   def initilise(x:Int) {
     snake1= new Snake(x)
     snake1.snake += List(1,1)
@@ -94,10 +89,6 @@ class snakeController extends Observable {
     timer1.start()
     notifyObservers
 }
-  
-  
-  
- 
 /**
  * This method models the food 
  * @return 
