@@ -16,9 +16,9 @@ object Application extends Controller {
 
   def index = Action {
     if(snakeController.snake1.registered==0) {
-      // gui.rg
+      gui.rg
       wui.register
-      // tui.register
+      tui.register
       snakeController.snake1.registered=1;
       snakeController.notifyObservers
     }

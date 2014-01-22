@@ -4,13 +4,14 @@
 @main("SNAKE") {
     <div id="wrapper">
 <div id="snakeContainer">
+@if(controller.snake1.status=="initialised") {
 <center><table class="border">
 <tr>
 @for(w <- 1 to controller.snake1.size){
 	@for(e <- 1 to controller.snake1.size){
 		<td class="td-style">
 		 @if(controller.check(w,e)=="*") {<div class="snake-body"></div>} else {
-		 @if(controller.check(w,e)=="+") {<img src='@routes.Assets.at("images/mouse.png")' class="mouse" />
+		 @if(controller.check(w,e)=="+") {<img src='@routes.Assets.at("imgs/mouse.jpg")' class="mouse" />
          }
 		 }
 		</td>
@@ -19,6 +20,12 @@
   <tr>	
 }
 </tr>
-</table></center>
+</table></center>}
+@if(controller.snake1.status=="finished") {
+    <p style="font-size=40;">
+        Game Over<br/>
+        You scored @controller.snake1.points points
+    </p>
+    }
 </div></div>
 }

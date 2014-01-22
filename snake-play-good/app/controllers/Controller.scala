@@ -4,9 +4,6 @@ package de.htwg.snake.controller
 import de.htwg.snake.util.Observable
 import de.htwg.snake.data.Snake
 import scala.swing._
-
-
-
 class snakeController extends Observable {
   val timer1=new javax.swing.Timer(400,Swing.ActionListener(e => {turn(snake1.direction); notifyObservers;}))
   var snake1= new Snake(0)
@@ -28,7 +25,9 @@ class snakeController extends Observable {
         c=" "
         return c
   }
-
+  def quit {
+    snake1.status="finished"
+  }
   def food{
     rx=rxx.nextInt(snake1.size)+1
     ry=rxx.nextInt(snake1.size)+1
