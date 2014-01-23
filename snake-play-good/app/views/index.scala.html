@@ -11,7 +11,7 @@
 	@for(e <- 1 to controller.snake1.size){
 		<td class="td-style">
 		 @if(controller.check(w,e)=="*") {<div class="snake-body"></div>} else {
-		 @if(controller.check(w,e)=="+") {<img src='@routes.Assets.at("imgs/mouse.jpg")' class="mouse" />
+		 @if(controller.check(w,e)=="+") {<img src='@routes.Assets.at("images/Mouse.png")' class="mouse" />
          }
 		 }
 		</td>

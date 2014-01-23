@@ -17,10 +17,10 @@ class guic(controller: snakeController) extends Observer  {
     frame.contents=new GridPanel(2,1){
       contents += new Label("Game Over")
       contents += new Label("You scored "+controller.snake1.points+" points")
+      preferredSize=new Dimension(200,200)
     }
     frame.repaint()
     frame.pack()
-    frame.size=new Dimension(200,200)
     timer1.stop()
   }
   def decide {
@@ -53,6 +53,7 @@ class guic(controller: snakeController) extends Observer  {
         }
       }
     }
+    panel.preferredSize = new Dimension(controller.snake1.size*15,controller.snake1.size*15)
     frame.contents=panel
     frame.open
     panel.requestFocus()
@@ -60,7 +61,6 @@ class guic(controller: snakeController) extends Observer  {
     frame.visible=true
     frame.repaint
     frame.pack
-    frame.size = new Dimension(controller.snake1.size*15+2,controller.snake1.size*15+50)
   }
   val timer1=new javax.swing.Timer(400,Swing.ActionListener(e => {controller.turn(controller.snake1.direction); controller.notifyObservers;}))
   def rg {
@@ -82,6 +82,7 @@ class guic(controller: snakeController) extends Observer  {
         val nr = new TextField("10",2) {
         }
         contents +=nr
+        preferredSize=new Dimension(270,100)
         val btn = new Button("Start");
         listenTo(btn)
         contents+=btn
@@ -93,7 +94,6 @@ class guic(controller: snakeController) extends Observer  {
 
       }
 
-      size=new Dimension(270,100)
       centerOnScreen
     }
     frame.visible=true
